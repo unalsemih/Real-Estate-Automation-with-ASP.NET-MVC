@@ -1,0 +1,94 @@
+﻿@model EmlakOtomasyonuProje.Models.i.indexModel
+@{
+    ViewBag.Title = "Index";
+
+
+    ViewBag.Title = "Index";
+    List<EmlakOtomasyonuProje.DB.Category> categories = new List<EmlakOtomasyonuProje.DB.Category>();
+    if (Model.Category != null)
+    {
+        categories.Add(Model.Category);
+        var parentcat = Model.Category.Category2;
+        while (parentcat != null)
+        {
+            categories.Add(parentcat);
+            parentcat = parentcat.Category2;
+        }
+    }
+
+}
+
+<!-- Latest compiled and minified CSS -->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="row">
+
+    @*@{
+        EmlakOtomasyonuProje.DB.EmlakDBEntities1 emlakDBEntities = new EmlakOtomasyonuProje.DB.EmlakDBEntities1(); ;
+
+           }*@
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("index", "i", new { id = 0 })">Ana Sayfa</a></li>
+                @for (int i = categories.Count - 1; i >= 0; i--)
+                {
+                    if (i == 0)
+                    {
+                        <li class="active">@categories[i].name</li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("index","i",new { id=categories[i].id })">@categories[i].name</a></li>
+                    }
+
+                }
+                @*<li class="active">Bilgisayar</li>*@
+            </ol>
+        </div>
+    </div>
+    @foreach (var item in Model.products)
+    {
+        if (item.state == true)
+        {
+
+            @Html.Partial("ProductItem", item);
+        }
+    }
+
+</div>
+
+
+
+@*
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="thumbnail">
+            <img src="http://placehold.it/300x150">
+            <div class="caption">
+                <h3>Thumbnail caption heading</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>
+                    <a href="cart.html" class="btn btn-success">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepete Ekle
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="#productinfo" class="btn btn-info">
+                        <span class="glyphicon glyphicon-info-sign"></span>&nbsp;Bilgi
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+*@

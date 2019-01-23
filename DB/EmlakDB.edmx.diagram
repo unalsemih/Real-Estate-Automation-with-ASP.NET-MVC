@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bec759e8a3484fd183837e63380e9718" Name="Diagram1">
+        <EntityTypeShape EntityType="EmlakDBModel.Addresses" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.Categories" Width="1.5" PointX="7.125" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.Members" Width="1.5" PointX="2" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.MessageReplies" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.Messages" Width="1.5" PointX="6.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.Products" Width="1.5" PointX="4.375" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmlakDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EmlakDBModel.FK_Addresses_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EmlakDBModel.FK_Categories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="EmlakDBModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="EmlakDBModel.FK_MessageReplies_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EmlakDBModel.FK_MessageReplies_Messages" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmlakDBModel.Category" Width="1.5" PointX="1.125" PointY="7.25" />
+        <AssociationConnector Association="EmlakDBModel.FK__Category__Parent__38996AB5" />
+        <AssociationConnector Association="EmlakDBModel.FK__Products__Catego__398D8EEE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

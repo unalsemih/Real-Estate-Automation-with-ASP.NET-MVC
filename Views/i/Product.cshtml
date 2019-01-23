@@ -1,0 +1,7 @@
+﻿@model EmlakOtomasyonuProje.Models.i.ProductModels
+@{
+    ViewBag.Title = "Product";
+}
+
+@Html.Partial("_Product", Model.Product)
+@Html.Partial("_AddCart",Model.Product)

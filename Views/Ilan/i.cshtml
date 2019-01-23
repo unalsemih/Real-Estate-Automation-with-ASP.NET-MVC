@@ -1,0 +1,75 @@
+﻿@model IEnumerable<EmlakOtomasyonuProje.DB.Products>
+
+@{
+    ViewBag.Title = "İlanar";
+}
+
+<h2>i</h2>
+
+<p>
+    @Html.ActionLink("Yeni İlan", "Edit")
+</p>
+<table class="table">
+    <tr>
+
+
+        <th>
+            @Html.DisplayName("İlan Başlığı")
+        </th>
+        <th>
+            @Html.DisplayName("Fiyat")
+        </th>
+        <th>
+            @Html.DisplayName("Ekleme Tarihi")
+        </th>
+        <th>
+            @Html.DisplayName("İlan Durumu")
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedDate.ToString().Split(' ')[0])
+            </td>
+
+            @{
+                if (item.state == true)
+                {
+                    <td style="color:darkgreen">
+                        Yayında
+                    </td>
+                }
+                else
+                {
+                    <td  style="color:darkred">
+                        Yayında Değil
+                    </td>
+                }
+            }
+
+
+
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

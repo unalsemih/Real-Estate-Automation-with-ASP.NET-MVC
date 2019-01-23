@@ -1,0 +1,80 @@
+﻿@model EmlakOtomasyonuProje.DB.Products
+
+@{
+    if (string.IsNullOrEmpty(Model.ProductImageName1))
+    {
+        Model.ProductImageName1 = "http://placehold.it/200x200";
+    }
+}
+<div class="row">
+    <div class="col-md-4">
+        <br />
+        <center><img src="@Model.ProductImageName1" class="img-responsive img-thumbnail" /></center>
+    </div>
+    <div class="col-md-8">
+
+        <div class="form-group">
+
+            <div class="col-md-6">
+                <h2>@Model.Name</h2>
+                <hr />
+            </div>
+            <div class="col-md-6 text-right">
+                <h2 class="text-danger">@Model.Price ₺</h2>
+                <hr />
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="form-group">
+
+            <span class="text-warning">
+
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 text-danger">İlan No :</label>
+            <label class="col-md-10">@("000"+Model.Id)</label>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 text-danger">Adres :</label>
+            <label class="col-md-10">@Model.Address</label>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 text-danger">Kat :</label>
+            <label class="col-md-10">@Model.kat</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 text-danger">Metrekare :  </label>
+            <label class="col-md-10">@Model.metreKare</label>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-2 text-danger">Tarihi : </label>
+            <label class="col-md-10">
+                @Model.AddedDate
+            </label>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 text-danger">Açıklama</label>
+            <label class="col-md-10">@Model.Description</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 text-danger"></label>
+            <label class="col-md-10">
+                Ipsum gravida vel pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut.
+            </label>
+        </div>
+    </div>
+</div>

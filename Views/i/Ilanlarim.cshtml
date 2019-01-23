@@ -1,0 +1,105 @@
+﻿@model EmlakOtomasyonuProje.Models.i.IlanlarimModel
+@{
+    ViewBag.Title = "İlanlarınız";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>İlanlarınız..</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <small style="color:red;">@TempData["MyError"]</small>
+        <table class="table table-condensed table-striped table-hover text-center">
+
+            <thead>
+                <tr>
+                    <!--th*4>{kolon adı}-->
+                    <th class="text-center">İlan Başlığı</th>
+                    <th class="text-center">Fiyat</th>
+                    <th class="text-center">Eklenme Tarihi</th>
+                    <th class="text-center">Durumu</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--tr*4>(td>lorem2)+(td>{10.00 ₺})+(td>{1})+(td>button.btn>span.glyphicon)-->
+                @foreach (var item in Model.Ilanlar)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price ₺</td>
+                        <td>@item.AddedDate.ToString().Split(' ')[0]</td>
+                        @{
+                            if (@item.state == true)
+                            {
+                                <td style="color:darkgreen">Yayında</td>}
+                            else
+                            {
+                                <td style="color:darkred">Yayında Değil</td>}
+                        }
+                                <td>
+                                    @{
+        if (item.state == false)
+        {
+                                <a href="~/i/onState/@item.Id" class="btn btn-success btn-xs">
+
+                                    <span class="glyphicon glyphicon-play"></span>
+                                </a>
+}
+else
+{
+                                <a href="~/i/offState/@item.Id" class="btn btn-success btn-xs">
+                                    <span class="glyphicon glyphicon-pause"></span>
+                                </a>
+}
+                                    }
+
+                                    &nbsp;|&nbsp;
+                                    <a href="~/i/Product/@item.Id" class="btn btn-info btn-xs">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </a>
+                                    <a href="~/Ilan/Edit/@item.Id" class="btn btn-success btn-xs">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-xs">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                    </tr>
+                }
+
+            </tbody>
+
+            <tfoot>
+                @if (ViewBag.CurrentAddresses != null && ((List<SelectListItem>)ViewBag.CurrentAddresses) != null)
+                {
+                    <tr>
+                        <td colspan="2">
+                            @Html.Label("AddressId", "Adres Seçiniz")
+                        </td>
+                        <td colspan="4">
+                            @Html.DropDownList("Address", (List<SelectListItem>)ViewBag.CurrentAddresses, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td colspan="2" class="text-right">
+                        <br />
+                       
+             </td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+    </div>
+</div>
